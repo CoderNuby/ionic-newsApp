@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      News Headlines
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">News Headlines</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-segment [value]="categories[0]" scrollable="true" (ionChange)="segmentChanged($event)">
+    <ion-segment-button *ngFor="let category of categories" [value]="category">
+      <ion-label class="ion-text-capitalize">{{category}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <app-articles [articles]="articles" (ionInfinite)="onIonInfinite($event)"></app-articles>
+</ion-content>
